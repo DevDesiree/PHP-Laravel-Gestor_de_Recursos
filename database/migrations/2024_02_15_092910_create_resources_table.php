@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('author');
             $table->unsignedBigInteger('id_themes');
             $table->foreign('id_themes')->references('id')->on('themes');
-            $table->unsignedBigInteger('id_extra_resources');
-            $table->foreign('id_extra_resources')->references('id')->on('extra_resources');
-            $table->unsignedBigInteger('id_resources_type');
-            $table->foreign('id_resources_type')->references('id')->on('resources_type');
+            $table->unsignedBigInteger('id_extraresources');
+            $table->foreign('id_extraresources')->references('id')->on('extraresources');
+            $table->unsignedBigInteger('id_resourcestype');
+            $table->foreign('id_resourcestype')->references('id')->on('resourcestype');
             $table->timestamps();
         });
     }

@@ -24,8 +24,8 @@ class CreateResourcesController extends Controller
         $resources->$request->author;
         $resources->$request->title;
         $resources->$request->id_themes;
-        $resources->$request->id_extra_resources;
-        $resources->$request->id_resources_type;
+        $resources->$request->id_extraresources;
+        $resources->$request->id_resourcestype;
         
         $resources->save();
     }
