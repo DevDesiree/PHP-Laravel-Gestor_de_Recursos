@@ -19,16 +19,7 @@ class ResourceFactory extends Factory
     public function definition(): array
     {
         return [
-          /*   'author'=>$this->faker->sentence(),
-            'title'=>$this->faker->title,
-            /* 'id_themes' => ResourceFactory::new()->create()->id,
-            'id_extra_resources' => ResourceFactory::new()->create()->id,
-            'id_resources_type' => ResourceFactory::new()->create()->id, */ 
-           /*  'id_themes' => $this->faker->unique(true)->numberBetween(1, 10), 
-            'id_extra_resources' => $this->faker->unique(true)->numberBetween(1, 10),  
-            'id_resources_type' => $this->faker->unique(true)->numberBetween(1, 10),
-              */
-              'author'=>$this->faker->sentence(),
+            'author'=>$this->faker->sentence(),
             'title'=>$this->faker->title,
             'id_themes' => 1,  
             'id_extra_resources' => rand(1, 2),
