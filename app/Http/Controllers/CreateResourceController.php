@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Resource;
 
 
-class CreateResourcesController extends Controller
+class CreateResourceController extends Controller
 {
     //
     public function index(){
