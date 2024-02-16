@@ -11,11 +11,11 @@ class CreateResourceController extends Controller
     //
     public function index(){
         $resources = Resource::paginate(6);
-        return view('courses.index', compact('resources'));
+        return view('resources.index', compact('resources'));
     }
 
     public function create(){
-        return view('courses.create');
+        return view('resources.create');
     }
 
     public function store(Request $request){
@@ -33,7 +33,7 @@ class CreateResourceController extends Controller
     public function show($id){
 
         $resource= Resource::findOrFail($id);
-        return view ('courses.show', compact('resource'));
+        return view ('resources.show', compact('resource'));
     }
 
     public function edit(){
@@ -46,14 +46,14 @@ class CreateResourceController extends Controller
         $resource ->update($request->all());
 
         $resource->save();
-        return redirect('courses.show');
+        return redirect('resources.show');
     }
 
     public function destroy($id) {
         $resource = Resource::findOrFail($id);
         $resource->delete();
 
-        return redirect('courses.index');
+        return redirect('resources.index');
     }
 
     
