@@ -38,7 +38,7 @@ class CreateResourceController extends Controller
     $resource->author = $request->input('author');
     $resource->title = $request->input('title');
     $resource->id_themes = $request->input('id_themes');
-    $resource->id_extraresources = $request->input('id_extraresources');
+    $resource->id_extraresources = $request->input('url');
     $resource->id_resourcestype = $request->input('id_resourcestype');
     
     $resource->save();

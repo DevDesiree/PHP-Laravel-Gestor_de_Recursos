@@ -33,42 +33,50 @@
     <br>
     @enderror
 
+
     <br>
-    <button type="submit">Enviar formulario</button>
+
     <br>
-    <br>
-    <a href="{{route('resources.index')}}">Volver a cursos</a>
 
 
     <label>
         Tema:
-        <br>
         <select name="id_themes">
             @foreach ($themes as $theme)
             <option value="{{ $theme->id }}">{{ $theme->title }}</option>
             @endforeach
         </select>
     </label>
-
+    <br>
     <label>
         Recurso Extra:
-        <br>
-        <select name="id_extraresources">
-            @foreach ($extraResources as $extraResource)
-            <option value="{{ $extraResource->id }}">{{ $extraResource->url }}</option>
-            @endforeach
-        </select>
-    </label>
 
+        <input name="url">
+        <label>
+            Recurso Extra URL:
+            <br>
+            <input type="text" name="url" value="{{ old('url') }}">
+        </label>
+        <!--   @foreach ($extraResources as $extraResource) -->
+        <!-- <option value="{{ $extraResource->id }}">{{ $extraResource->url }}</option> -->
+        <!-- @endforeach -->
+        </input>
+    </label>
+    <br>
     <label>
         Tipo de Recurso:
-        <br>
+
         <select name="id_resourcestype">
             @foreach ($resourceTypes as $resourceType)
             <option value="{{ $resourceType->id }}">{{ $resourceType->titleResource }}</option>
             @endforeach
         </select>
     </label>
+    <br>
+    <button type="submit">Enviar formulario</button>
+    <br>
+    <a href="{{route('resources.index')}}">Volver a cursos</a>
+
 
 
 
