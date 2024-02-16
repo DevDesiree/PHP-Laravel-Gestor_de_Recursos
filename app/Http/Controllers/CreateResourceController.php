@@ -19,15 +19,17 @@ class CreateResourceController extends Controller
     }
 
     public function store(Request $request){
-        $resources =  new Resource();
-        
-        $resources->$request->author;
-        $resources->$request->title;
-        $resources->$request->id_themes;
-        $resources->$request->id_extraresources;
-        $resources->$request->id_resourcestype;
-        
-        $resources->save();
+        $resource = new Resource();
+    
+    $resource->author = $request->input('author');
+    $resource->title = $request->input('title');
+    $resource->id_themes = $request->input('id_themes');
+    $resource->id_extraresources = $request->input('id_extraresources');
+    $resource->id_resourcestype = $request->input('id_resourcestype');
+    
+    $resource->save();
+
+    return redirect()->route('resources.index');
     }
 
     public function show($id){
@@ -36,10 +38,11 @@ class CreateResourceController extends Controller
         return view ('resources.show', compact('resource'));
     }
 
-    public function edit(){
-
-        return view('resources.edit', compact('resource'));
-    }
+   public function edit($id)
+{
+    $resource = Resource::findOrFail($id);
+    return view('resources.edit', compact('resource'));
+}
 
     public function update(Request $request, $id) {
         $resource = Resource::findOrFail($id);
