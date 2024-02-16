@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/' , HomeController::class)->name('home');
+//Route::get('/', [HomeController::class, 'home']);
 
-Route::controller();
+Route::get('courses', 'index')->name('courses.index');
 
+Route::get('courses/create', 'create')->name('courses.create');
 
-Route::view('/', 'welcome')->name('home');
+Route::post('courses', 'store')->name('courses.store');
 
-Route::view('/courses', 'index')->name('index');
+Route::get('courses/{course}', 'show')->name('courses.show');
 
-Route::view('/courses', 'edit')->name('edit');
+Route::get('courses/{course}', 'edit')->name('courses.edit');
 
-Route::view('/courses', 'show')->name('show');
+Route::put('courses/{course}', 'update')->name('courses.update');
 
-Route::view('/courses', 'create')->name('create');
+Route::delete('courses/{course}', 'destroy')->name('courses.destroy');
