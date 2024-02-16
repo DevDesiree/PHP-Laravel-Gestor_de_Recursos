@@ -49,18 +49,14 @@
     </label>
     <br>
     <label>
-        Recurso Extra:
-
-        <input name="url">
-        <label>
-            Recurso Extra URL:
-            <br>
-            <input type="text" name="url" value="{{ old('url') }}">
-        </label>
-        <!--   @foreach ($extraResources as $extraResource) -->
-        <!-- <option value="{{ $extraResource->id }}">{{ $extraResource->url }}</option> -->
-        <!-- @endforeach -->
-        </input>
+        Recurso Extra URL:
+        <br>
+        <input type="text" name="url" value="{{ old('url') }}">
+    </label>
+    <!--   @foreach ($extraResources as $extraResource) -->
+    <!-- <option value="{{ $extraResource->id }}">{{ $extraResource->url }}</option> -->
+    <!-- @endforeach -->
+    </input>
     </label>
     <br>
     <label>
