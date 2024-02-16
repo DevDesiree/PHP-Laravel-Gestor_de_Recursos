@@ -9,26 +9,12 @@
     @csrf
 
     <label>
-        Name:
+        Author:
         <br>
-        <input type="text" name="name" value="{{old('name')}}">
+        <input type="text" name="author" value="{{old('author')}}">
     </label>
 
-    @error('name')
-    <br>
-    <spam>*{{ $message }}</spam>
-    <br>
-    @enderror
-
-    <br>
-
-    <label>
-        Slug:
-        <br>
-        <input type="text" name="slug" value="{{old('slug')}}">
-    </label>
-
-    @error('slug')
+    @error('author')
     <br>
     <spam>*{{ $message }}</spam>
     <br>
@@ -36,35 +22,54 @@
 
     <br>
     <label>
-        Description:
+        title:
         <br>
-        <textarea name="description" rows="5">{{old('description')}}</textarea>
+        <input type="text" name="title" value="{{old('title')}}">
     </label>
 
-    @error('description')
+    @error('title')
     <br>
     <spam>*{{ $message }}</spam>
     <br>
     @enderror
 
-    <br>
-    <label>
-        Categoria:
-        <br>
-        <input type="text" name="category" value="{{old('category')}}">
-    </label>
-
-    @error('category')
-    <br>
-    <spam>*{{ $message }}</spam>
-    <br>
-    @enderror
-    <br>
     <br>
     <button type="submit">Enviar formulario</button>
     <br>
     <br>
     <a href="{{route('resources.index')}}">Volver a cursos</a>
+
+
+    <label>
+        Tema:
+        <br>
+        <select name="id_themes">
+            @foreach ($themes as $theme)
+            <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+            @endforeach
+        </select>
+    </label>
+
+    <label>
+        Recurso Extra:
+        <br>
+        <select name="id_extraresources">
+            @foreach ($extraResources as $extraResource)
+            <option value="{{ $extraResource->id }}">{{ $extraResource->url }}</option>
+            @endforeach
+        </select>
+    </label>
+
+    <label>
+        Tipo de Recurso:
+        <br>
+        <select name="id_resourcestype">
+            @foreach ($resourceTypes as $resourceType)
+            <option value="{{ $resourceType->id }}">{{ $resourceType->titleResource }}</option>
+            @endforeach
+        </select>
+    </label>
+
 
 
 
