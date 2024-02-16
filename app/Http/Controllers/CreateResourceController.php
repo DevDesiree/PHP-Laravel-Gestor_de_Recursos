@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Resource;
+use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\ExtraResourceController;
+use App\Http\Controllers\ResourceTypeController;
+use App\Models\Themes;
+use App\Models\ResourceType;
+use App\Models\ExtraResource; 
 
 
 class CreateResourceController extends Controller
@@ -11,49 +17,60 @@ class CreateResourceController extends Controller
     //
     public function index(){
         $resources = Resource::paginate(6);
-        return view('courses.index', compact('resources'));
+        return view('resources.index', compact('resources'));
     }
-
+    
     public function create(){
-        return view('courses.create');
+        $themes = Themes::all(); // Suponiendo que Theme es el modelo para la tabla de temas
+        $extraResources = ExtraResource::all(); // Suponiendo que ExtraResource es el modelo para la tabla de recursos extra
+        $resourceTypes = ResourceType::all(); // Suponiendo que ResourceType es el modelo para la tabla de tipos de recursos
+        
+        return view('resources.create', compact('themes', 'extraResources', 'resourceTypes'));
     }
 
+    /* public function create(){
+        return view('resources.create');
+    }
+ */
     public function store(Request $request){
-        $resources =  new Resource();
-        
-        $resources->$request->author;
-        $resources->$request->title;
-        $resources->$request->id_themes;
-        $resources->$request->id_extraresources;
-        $resources->$request->id_resourcestype;
-        
-        $resources->save();
+        $resource = new Resource();
+    
+    $resource->author = $request->input('author');
+    $resource->title = $request->input('title');
+    $resource->id_themes = $request->input('id_themes');
+    $resource->id_extraresources = $request->input('id_extraresources');
+    $resource->id_resourcestype = $request->input('id_resourcestype');
+    
+    $resource->save();
+
+    return redirect()->route('resources.index');
     }
 
     public function show($id){
 
         $resource= Resource::findOrFail($id);
-        return view ('courses.show', compact('resource'));
+        return view ('resources.show', compact('resource'));
     }
 
-    public function edit(){
-
-        return view('resources.edit', compact('resource'));
-    }
+   public function edit($id)
+{
+    $resource = Resource::findOrFail($id);
+    return view('resources.edit', compact('resource'));
+}
 
     public function update(Request $request, $id) {
         $resource = Resource::findOrFail($id);
         $resource ->update($request->all());
 
         $resource->save();
-        return redirect('courses.show');
+        return redirect('resources.show');
     }
 
     public function destroy($id) {
         $resource = Resource::findOrFail($id);
         $resource->delete();
 
-        return redirect('courses.index');
+        return redirect('resources.index');
     }
 
     

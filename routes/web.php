@@ -1,31 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CreateResourceController;
+use App\Http\Controllers\HomeController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'resources'], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('resources.index');
+    Route::get('/create', [CreateResourceController::class, 'create'])->name('resources.create');
+    Route::post('/', [CreateResourceController::class, 'store'])->name('resources.store');
+    Route::get('/{resource}', [CreateResourceController::class, 'show'])->name('resources.show'); // Esta ruta es para mostrar un recurso
+    Route::get('/{resource}/edit', [CreateResourceController::class, 'edit'])->name('resources.edit'); // Esta ruta es para editar un recurso
+    Route::put('/{resource}', [CreateResourceController::class, 'update'])->name('resources.update');
+    Route::delete('/{resource}', [CreateResourceController::class, 'destroy'])->name('resources.destroy');
 });
-
-Route::controller();
-
-
-Route::view('/', 'welcome')->name('home');
-
-Route::view('/courses', 'index')->name('index');
-
-Route::view('/courses', 'edit')->name('edit');
-
-Route::view('/courses', 'show')->name('show');
-
-Route::view('/courses', 'create')->name('create');
