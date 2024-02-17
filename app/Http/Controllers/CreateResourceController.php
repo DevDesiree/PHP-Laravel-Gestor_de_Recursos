@@ -21,17 +21,13 @@ class CreateResourceController extends Controller
     }
     
     public function create(){
-        $themes = Themes::all(); // Suponiendo que Theme es el modelo para la tabla de temas
-        $extraResources = ExtraResource::all(); // Suponiendo que ExtraResource es el modelo para la tabla de recursos extra
-        $resourceTypes = ResourceType::all(); // Suponiendo que ResourceType es el modelo para la tabla de tipos de recursos
+        $themes = Themes::all();
+        $extraResources = ExtraResource::all();
+        $resourceTypes = ResourceType::all(); 
         
         return view('resources.create', compact('themes', 'extraResources', 'resourceTypes'));
     }
 
-    /* public function create(){
-        return view('resources.create');
-    }
- */
     public function store(Request $request){
     $resource = new Resource();
     
@@ -39,7 +35,6 @@ class CreateResourceController extends Controller
     $resource->title = $request->input('title');
     $resource->id_themes = $request->input('id_themes');
 
-    // Crear un nuevo ExtraResource y guardar su ID
     $extraResource = new ExtraResource;
     $extraResource->url = $request->input('url');
     $extraResource->save();
@@ -63,8 +58,8 @@ class CreateResourceController extends Controller
         $resource = Resource::find($id);
         $themes = Themes::all();
         $resourceTypes = ResourceType::all();
-        $extraResources = ExtraResource::all(); // Asegúrate de que esta línea esté presente
-        return view('edit', compact('resource', 'themes', 'resourceTypes', 'extraResources'));
+        $extraResources = ExtraResource::all();
+        return view('resources.edit', compact('resource', 'themes', 'resourceTypes', 'extraResources'));
     }
     
 
