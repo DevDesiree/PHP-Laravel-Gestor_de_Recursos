@@ -18,7 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_themes');
             $table->foreign('id_themes')->references('id')->on('themes');
             $table->unsignedBigInteger('id_extraresources');
-            $table->foreign('id_extraresources')->references('id')->on('extraresources');
+            
+            $table->foreign('url_extraresources')->references('url')->on('extraresources');
+           /*  $table->foreign('id_extraresources')->references('id')->on('extraresources'); */
             $table->unsignedBigInteger('id_resourcestype');
             $table->foreign('id_resourcestype')->references('id')->on('resourcestype');
             $table->timestamps();

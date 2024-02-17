@@ -33,18 +33,24 @@ class CreateResourceController extends Controller
     }
  */
     public function store(Request $request){
-        $resource = new Resource();
+    $resource = new Resource();
     
     $resource->author = $request->input('author');
     $resource->title = $request->input('title');
     $resource->id_themes = $request->input('id_themes');
-    $resource->id_extraresources = $request->input('id_extraresources');
+
+    // Crear un nuevo ExtraResource y guardar su ID
+    $extraResource = new ExtraResource;
+    $extraResource->url = $request->input('url');
+    $extraResource->save();
+    $resource->id_extraresources = $extraResource->id;
+
     $resource->id_resourcestype = $request->input('id_resourcestype');
     
     $resource->save();
 
     return redirect()->route('resources.index');
-    }
+}
 
     public function show($id){
 
