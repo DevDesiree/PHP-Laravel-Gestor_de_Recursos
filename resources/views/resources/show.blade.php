@@ -8,7 +8,9 @@
 <h1> Bienvenido al curso {{$resource->title}} </h1>
 <br>
 <p><strong>Autor:</strong> {{$resource->author}}</p>
-<p><strong>Recurso:</strong> {{$resource->theme->title}}</p>
+<p><strong>Título:</strong> {{$resource->title}}</p>
+<p><strong>Tema:</strong> {{$resource->theme->title}}</p>
+<p><strong>Tipo de Recurso:</strong> {{$resource->resourcetype->titleResource}}</p>
 
 <p><strong>Recurso Extra:</strong> {{$resource->extraResource->url}}</p>
 

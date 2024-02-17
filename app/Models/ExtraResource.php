@@ -9,4 +9,7 @@ class ExtraResource extends Model
 {
     use HasFactory;
     protected $table = 'extraresources';
+    protected $fillable = [
+        'url',
+    ];
 }
