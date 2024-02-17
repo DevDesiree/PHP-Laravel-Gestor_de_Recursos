@@ -55,7 +55,7 @@ class CreateResourceController extends Controller
 
     public function edit($id)
     {
-        $resource = Resource::find($id);
+        $resource = Resource::findOrFail($id);
         $themes = Themes::all();
         $resourceTypes = ResourceType::all();
         $extraResources = ExtraResource::all();
@@ -64,8 +64,14 @@ class CreateResourceController extends Controller
     
 
     public function update(Request $request, $id) {
+    
         $resource = Resource::findOrFail($id);
         $resource ->update($request->all());
+    
+        $resource->extraResource->update([
+            'url' => $request->input('url'),
+        ]);
+    
         return redirect()->route('resources.show', $resource->id);
     }
 
