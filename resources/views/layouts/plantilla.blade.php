@@ -12,7 +12,7 @@
 <body>
 
     <header>
-        <h1>FemCoders</h1>
+        <h1>Recursos</h1>
         <nav>
             <ul>
                 <li><a href="{{route('home')}}">Home</a></li>
