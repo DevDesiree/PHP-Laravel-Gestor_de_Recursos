@@ -3,7 +3,7 @@
 @section('title', 'Resources edit')
 
 @section('content')
-<h1>Aquí podrás editar un nuevo curso</h1>
+<h1>Aquí podrás editar el recurso</h1>
 <form action="{{ route('resources.update', $resource->id) }}" method="POST">
 
     @csrf
@@ -50,17 +50,6 @@
     </label>
     <br>
     <label>
-        Recurso Extra URL:
-        <br>
-        <input type="text" name="url" value="{{ old('url', $resource->url) }}">
-    </label>
-    <!--   @foreach ($extraResources as $extraResource) -->
-    <!-- <option value="{{ $extraResource->id }}">{{ $extraResource->url }}</option> -->
-    <!-- @endforeach -->
-    </input>
-    </label>
-    <br>
-    <label>
         Tipo de Recurso:
 
         <select name="id_resourcestype">
@@ -70,10 +59,14 @@
         </select>
     </label>
     <br>
+    <label>
+        Recurso Extra URL:
+        <br>
+        <input type="text" name="url" value="{{ old('url', $resource->extraResource->url ?? '') }}">
+    </label>
+    <br>
     <button type="submit">Enviar formulario</button>
     <br>
     <a href="{{ route('resources.index') }}">Volver a cursos</a>
-
-    <input type="hidden" name="id" value="{{ $resource->id }}">
 </form>
 @endsection
