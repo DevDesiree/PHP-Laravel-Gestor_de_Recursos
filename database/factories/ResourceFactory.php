@@ -20,10 +20,11 @@ class ResourceFactory extends Factory
     {
         return [
             'author'=>$this->faker->sentence(),
-            'title'=>$this->faker->title,
+            'title'=>$this->faker->sentence(), // Cambiar de $this->faker->title a $this->faker->sentence()
             'id_themes' => 1,  
             'id_extraresources' => rand(1, 2),
             'id_resourcestype' => rand(1, 2),
         ];
     }
+    
 }
