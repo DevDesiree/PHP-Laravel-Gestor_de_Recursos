@@ -66,9 +66,7 @@ class CreateResourceController extends Controller
     public function update(Request $request, $id) {
         $resource = Resource::findOrFail($id);
         $resource ->update($request->all());
-
-        // $resource->save();
-        return redirect('resources.show');
+        return redirect()->route('resources.show', $resource->id);
     }
 
     public function destroy($id) {
