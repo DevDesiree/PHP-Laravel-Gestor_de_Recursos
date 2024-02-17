@@ -21,7 +21,7 @@
 <br>
 <br>
 <a href="{{route('resources.edit', $resource)}}">Editar curso</a>
-    
+   
 
 <br>
 <br>

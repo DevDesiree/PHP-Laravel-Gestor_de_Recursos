@@ -16,7 +16,7 @@ class CreateResourceController extends Controller
 {
     //
     public function index(){
-        $resources = Resource::paginate(6);
+        $resources = Resource::paginate(15);
         return view('resources.index', compact('resources'));
     }
     
@@ -58,17 +58,21 @@ class CreateResourceController extends Controller
         return view ('resources.show', compact('resource'));
     }
 
-   public function edit($id)
-{
-    $resource = Resource::findOrFail($id);
-    return view('resources.edit', compact('resource'));
-}
+    public function edit($id)
+    {
+        $resource = Resource::find($id);
+        $themes = Themes::all();
+        $resourceTypes = ResourceType::all();
+        $extraResources = ExtraResource::all(); // Asegúrate de que esta línea esté presente
+        return view('edit', compact('resource', 'themes', 'resourceTypes', 'extraResources'));
+    }
+    
 
     public function update(Request $request, $id) {
         $resource = Resource::findOrFail($id);
         $resource ->update($request->all());
 
-        $resource->save();
+        // $resource->save();
         return redirect('resources.show');
     }
 
