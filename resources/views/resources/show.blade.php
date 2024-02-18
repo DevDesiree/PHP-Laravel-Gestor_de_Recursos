@@ -1,4 +1,3 @@
-
 @extends('layouts.plantilla')
 
 @section('title', 'Resource' . $resource->name)
@@ -20,14 +19,25 @@
     @csrf
     @method('delete')
     <button type="submit">Eliminar</button>
-<br>
-<br>
-<a href="{{route('resources.edit', $resource)}}">Editar curso</a>
-   
+    <br>
+    <br>
+    <a href="{{route('resources.edit', $resource)}}">Editar curso</a>
 
-<br>
-<br>
-<a href="{{route('resources.index')}}">Volver a cursos</a>
+    @if(Session::has('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: '{{ Session::get("success") }}',
+            showConfirmButton: true,
+            timer: 2000
+        });
+    </script>
+    @endif
+
+    <br>
+    <br>
+    <a href="{{route('resources.index')}}">Volver a cursos</a>
 </form>
 
 @endsection

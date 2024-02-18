@@ -21,8 +21,8 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function __invoke() {
-        $resources = Resource::paginate(10); // Obtener los recursos paginados
+        $resources = Resource::paginate(10);
 
-        return view('home', compact('resources')); // Pasar los recursos a la vista
+        return view('home', compact('resources')); 
     }
 }

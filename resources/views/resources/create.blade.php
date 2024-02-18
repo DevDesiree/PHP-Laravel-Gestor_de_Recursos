@@ -72,10 +72,5 @@
     <button type="submit">Enviar formulario</button>
     <br>
     <a href="{{route('resources.index')}}">Volver a cursos</a>
-
-
-
-
-
 </form>
 @endsection
