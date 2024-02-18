@@ -44,7 +44,7 @@ class CreateResourceController extends Controller
     
     $resource->save();
 
-    return redirect()->route('resources.index');
+    return redirect()->route('resources.index')->with('success', 'El recurso se ha creado correctamente.');
 }
 
     public function show($id){
@@ -72,14 +72,14 @@ class CreateResourceController extends Controller
             'url' => $request->input('url'),
         ]);
     
-        return redirect()->route('resources.show', $resource->id);
+        return redirect()->route('resources.show', $resource->id)->with('success', 'Recurso actualizado correctamente.');
     }
 
     public function destroy($id) {
         $resource = Resource::findOrFail($id);
         $resource->delete();
 
-        return redirect('resources.index');
+        return redirect()->route('resources.index')->with('success', 'Recurso eliminado correctamente.');
     }
 
     
