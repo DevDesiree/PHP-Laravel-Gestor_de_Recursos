@@ -47,9 +47,9 @@ class CreateResourceController extends Controller
 }
 
     public function show($id){
-
-        $resource= Resource::findOrFail($id);
-        return view ('resources.show', compact('resource'));
+        $resource = Resource::findOrFail($id);
+        $creationDate = $resource->created_at;
+        return view('resources.show', compact('resource', 'creationDate'));
     }
 
     public function edit($id)
