@@ -13,11 +13,16 @@
 <body>
 
 
-    <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src=" {{ url('/crafhers-logo.png') }}" class="h-8" />
-            </a>
+    <nav class="border-gray-200 bg-black dark:bg-gray-800 dark:border-gray-700">
+        <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
+            <div>
+                <a href="{{ route('index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="{{ asset('img/logo-codecrafthers.png') }}" class="h-24 bg-white shadow-2xl" />
+                </a>
+            </div>
+            <div>
+                <h1 class="text-white">Administrador de recursos</h1>
+            </div>
             <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
                 <a href="{{ route('resources.create') }}">
                     <button class="add-btn hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
