@@ -3,7 +3,7 @@
 @section('title', 'Resources create')
 
 @section('content')
-<h1>Aquí podrás crear un nuevo curso</h1>
+<h1>Aquí podrás crear un nuevo recurso</h1>
 <form action="{{route('resources.store')}}" method="POST">
 
     @csrf
@@ -71,6 +71,6 @@
     <br>
     <button type="submit">Enviar formulario</button>
     <br>
-    <a href="{{route('resources.index')}}">Volver a cursos</a>
+    <a href="{{route('index')}}">Volver a cursos</a>
 </form>
 @endsection

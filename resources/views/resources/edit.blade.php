@@ -67,6 +67,6 @@
     <br>
     <button type="submit">Enviar formulario</button>
     <br>
-    <a href="{{ route('resources.index') }}">Volver a cursos</a>
+    <a href="{{ route('index') }}">Volver a recursos</a>
 </form>
 @endsection

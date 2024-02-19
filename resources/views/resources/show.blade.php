@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1> Bienvenido al curso {{$resource->title}} </h1>
+<h1> {{$resource->title}} </h1>
 <br>
 <p><strong>Autor:</strong> {{$resource->author}}</p>
 <p><strong>Título:</strong> {{$resource->title}}</p>
@@ -21,7 +21,7 @@
     <button type="submit">Eliminar</button>
     <br>
     <br>
-    <a href="{{route('resources.edit', $resource)}}">Editar curso</a>
+    <a href="{{route('resources.edit', $resource)}}">Editar recurso</a>
 
     @if(Session::has('success'))
     <script>
@@ -37,7 +37,7 @@
 
     <br>
     <br>
-    <a href="{{route('resources.index')}}">Volver a cursos</a>
+    <a href="{{route('index')}}">Volver a recursos</a>
 </form>
 
 @endsection

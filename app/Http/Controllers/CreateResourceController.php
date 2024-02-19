@@ -43,7 +43,7 @@ class CreateResourceController extends Controller
     
     $resource->save();
 
-    return redirect()->route('resources.index')->with('success', 'El recurso se ha creado correctamente.');
+    return redirect()->route('index')->with('success', 'El recurso se ha creado correctamente.');
 }
 
     public function show($id){
@@ -78,7 +78,7 @@ class CreateResourceController extends Controller
         $resource = Resource::findOrFail($id);
         $resource->delete();
 
-        return redirect()->route('resources.index')->with('success', 'Recurso eliminado correctamente.');
+        return redirect()->route('index')->with('success', 'Recurso eliminado correctamente.');
     }
 
     
