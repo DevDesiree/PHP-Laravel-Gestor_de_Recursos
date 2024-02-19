@@ -3,8 +3,8 @@
 @section('title', 'Resources')
 
 @section('content')
-<h1>Bienvenido a la página de recursos</h1>
-<a href="{{ route('resources.create') }}">Crear Recurso</a>
+<h1>Bienvenido a la página de cursos</h1>
+<a href="{{ route('resources.create') }}">Crear Curso</a>
 @if(Session::has('success'))
 <script>
 Swal.fire({

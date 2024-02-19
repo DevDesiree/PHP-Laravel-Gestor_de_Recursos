@@ -17,9 +17,8 @@ class CreateResourceController extends Controller
     //
     public function index(){
         $resources = Resource::paginate(15);
-        return view('index', compact('resources'));
+        return view('resources.index', compact('resources'));
     }
-    
     public function create(){
         $themes = Themes::all();
         $extraResources = ExtraResource::all();
