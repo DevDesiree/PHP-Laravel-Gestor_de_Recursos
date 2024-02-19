@@ -17,7 +17,7 @@ class CreateResourceController extends Controller
     //
     public function index(){
         $resources = Resource::paginate(15);
-        return view('resources.index', compact('resources'));
+        return view('index', compact('resources'));
     }
     
     public function create(){
