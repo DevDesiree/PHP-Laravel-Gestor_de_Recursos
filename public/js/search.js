@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log("Script loaded");
     let searchInput = document.getElementById('search');
 
     searchInput.addEventListener('input', function () {
