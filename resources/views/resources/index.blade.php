@@ -16,39 +16,9 @@ Swal.fire({
 });
 </script>
 @endif
-<div class="mt-4 container-search">
-    <label for="search" class="block text-sm font-medium text-gray-700">Buscar por Título</label>
-    <input type="text" name="search" id="search" class="mt-1 p-2 border rounded-md" placeholder="Escribe para buscar...">
-</div>
-
-
-<form method="GET" action="{{ route('index') }}" id="filter-form">
-    @csrf
-    <div class="mt-4">
-        <label for="theme" class="block text-sm font-medium text-gray-700">Filtrar por Tema</label>
-        <select name="theme" id="theme" class="mt-1 p-2 border rounded-md w-full" onchange="this.form.submit()">
-            <option value="" selected>Selecciona un tema</option>
-            @foreach ($themes as $theme)
-                <option value="{{ $theme->id }}">{{ $theme->title }}</option>
-            @endforeach
-        </select>
-    </div>
-</form>
-
-<form method="GET" action="{{ route('index') }}" id="filter-form">
-    @csrf
-    <div class="mt-4">
-        <label for="resource_type" class="block text-sm font-medium text-gray-700">Filtrar por Tipo de Recurso</label>
-        <select name="resource_type" id="resource_type" class="mt-1 p-2 border rounded-md w-full" onchange="this.form.submit()">
-            <option value="" selected>Selecciona un tipo de recurso</option>
-            @foreach ($resourceTypes as $resourceType)
-            <option value="{{ $resourceType->id }}">{{ $resourceType->titleResource }}</option>
-            @endforeach
-        </select>
-    </div>
-</form>
 
 <div class="flex flex-row flex-wrap gap-10 px-12 pt-4 w-auto">
+    @foreach ($filteredResources as $resource)
     @foreach ($filteredResources as $resource)
     <div
         class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 resource-card">
@@ -75,10 +45,14 @@ Swal.fire({
                 </ul>
             </div>
         </div>
-        <div class="flex flex-col items-center pb-10">
+        <div class="flex flex-col items-center gap-2 pb-10">
             <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ url('/img/Atefa_1.png') }}" alt="author image" />
-            <h6 class="mb-1 text-xxl px-4 text-center font-small text-gray-900 dark:text-white resource-author">{{ $resource->author }}</h6>
-            <h5 class="mb-1 text-xl px-4 text-center font-medium text-gray-900 dark:text-white resource-title">{{ $resource->title }}</h5>
+            <h6 class="mb-1 text-xxl px-4 text-center font-small text-gray-900 dark:text-white resource-author">
+                {{ $resource->author }}
+            </h6>
+            <h5 class="mb-1 text-xl px-4 text-center font-medium text-gray-900 dark:text-white resource-title">
+                {{ $resource->title }}
+            </h5>
             <h5 class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white">
                 {{$resource->resourcetype->titleResource }}
                 <h5 class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white">
@@ -89,7 +63,8 @@ Swal.fire({
                     <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ $resource->titleResource }}
                     </h5>
                     <h5 class="mb-1 text-md font-medium text-gray-900 dark:text-white">Fecha de creación:
-                        {{ $resource->created_at->format('d/m/Y') }}</h5>
+                        {{ $resource->created_at->format('d/m/Y') }}
+                    </h5>
 
                     <div class="flex mt-6 md:mt-6">
 
@@ -111,11 +86,6 @@ Swal.fire({
         </div>
     </div>
     @endforeach
+    @endforeach
+
 </div>
-
-@push('scripts')
-    <script src="{{ asset('js/search.js') }}"></script>
-@endpush
-
-{{-- {{ $resources->links() }} --}}
-@endsection
