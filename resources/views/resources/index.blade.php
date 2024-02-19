@@ -18,7 +18,7 @@ Swal.fire({
 </script>
 @endif
 
-<div class="flex flex-row flex-wrap gap-10 justify-center pt-4 w-auto">
+<div class="flex flex-row flex-wrap gap-10 px-12 pt-4 w-auto">
     @foreach ($filteredResources as $resource)
     <div
         class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
