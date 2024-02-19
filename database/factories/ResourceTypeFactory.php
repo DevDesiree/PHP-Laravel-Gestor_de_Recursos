@@ -17,7 +17,7 @@ class ResourceTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'titleResource'=>$this->faker->sentence(),
+            'titleResource'=>$this->faker->randomElement(['Masterclass', 'Píldora', 'Coding Live', 'Transversal']),
             
         ];
     }

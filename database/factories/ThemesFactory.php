@@ -17,7 +17,7 @@ class ThemesFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'=>$this->faker->sentence(),
+            'title'=>$this->faker->randomElement(['Project Management', 'Functional and Technical Analysis', 'Front-End', 'Back-End', 'Arquitectura', 'QA']),
             
         ];
     }

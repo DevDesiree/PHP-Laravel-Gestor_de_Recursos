@@ -19,7 +19,6 @@ class CreateResourceController extends Controller
         $resources = Resource::paginate(15);
         return view('resources.index', compact('resources'));
     }
-    
     public function create(){
         $themes = Themes::all();
         $extraResources = ExtraResource::all();
@@ -44,7 +43,7 @@ class CreateResourceController extends Controller
     
     $resource->save();
 
-    return redirect()->route('resources.index')->with('success', 'El recurso se ha creado correctamente.');
+    return redirect()->route('index')->with('success', 'El recurso se ha creado correctamente.');
 }
 
     public function show($id){
@@ -79,7 +78,7 @@ class CreateResourceController extends Controller
         $resource = Resource::findOrFail($id);
         $resource->delete();
 
-        return redirect()->route('resources.index')->with('success', 'Recurso eliminado correctamente.');
+        return redirect()->route('index')->with('success', 'Recurso eliminado correctamente.');
     }
 
     
