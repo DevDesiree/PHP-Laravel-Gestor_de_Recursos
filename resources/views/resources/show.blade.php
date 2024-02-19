@@ -10,6 +10,7 @@
 <p><strong>Título:</strong> {{$resource->title}}</p>
 <p><strong>Tema:</strong> {{$resource->theme->title}}</p>
 <p><strong>Tipo de Recurso:</strong> {{$resource->resourcetype->titleResource}}</p>
+<p><strong>Fecha de creación: </strong>{{ $creationDate->format('d/m/Y') }}</p>
 
 <p><strong>Recurso Extra:</strong> {{$resource->extraResource->url}}</p>
 
@@ -25,13 +26,13 @@
 
     @if(Session::has('success'))
     <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Éxito',
-            text: '{{ Session::get("success") }}',
-            showConfirmButton: true,
-            timer: 2000
-        });
+    Swal.fire({
+        icon: 'success',
+        title: 'Éxito',
+        text: '{{ Session::get("success") }}',
+        showConfirmButton: true,
+        timer: 2000
+    });
     </script>
     @endif
 
