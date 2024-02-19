@@ -21,8 +21,35 @@ Swal.fire({
     <input type="text" name="search" id="search" class="mt-1 p-2 border rounded-md" placeholder="Escribe para buscar...">
 </div>
 
+
+<form method="GET" action="{{ route('index') }}" id="filter-form">
+    @csrf
+    <div class="mt-4">
+        <label for="theme" class="block text-sm font-medium text-gray-700">Filtrar por Tema</label>
+        <select name="theme" id="theme" class="mt-1 p-2 border rounded-md w-full" onchange="this.form.submit()">
+            <option value="" selected>Selecciona un tema</option>
+            @foreach ($themes as $theme)
+                <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+            @endforeach
+        </select>
+    </div>
+</form>
+
+<form method="GET" action="{{ route('index') }}" id="filter-form">
+    @csrf
+    <div class="mt-4">
+        <label for="resource_type" class="block text-sm font-medium text-gray-700">Filtrar por Tipo de Recurso</label>
+        <select name="resource_type" id="resource_type" class="mt-1 p-2 border rounded-md w-full" onchange="this.form.submit()">
+            <option value="" selected>Selecciona un tipo de recurso</option>
+            @foreach ($resourceTypes as $resourceType)
+            <option value="{{ $resourceType->id }}">{{ $resourceType->titleResource }}</option>
+            @endforeach
+        </select>
+    </div>
+</form>
+
 <div class="flex flex-row flex-wrap gap-10 px-12 pt-4 w-auto">
-    @foreach ($resources as $resource)
+    @foreach ($filteredResources as $resource)
     <div
         class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 resource-card">
         <div class="flex flex-row flex-wrap px-4 pt-4">

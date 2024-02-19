@@ -15,10 +15,25 @@ use App\Models\ExtraResource;
 class CreateResourceController extends Controller
 {
     //
-    public function index(){
-        $resources = Resource::paginate(15);
-        return view('resources.index', compact('resources'));
+    public function index(Request $request){
+        $themes = Themes::all();
+        $resourceTypes = ResourceType::all();
+        
+        $selectedThemeId = $request->input('theme');
+        $selectedResourceTypeId = $request->input('resource_type');
+    
+        $filteredResources = Resource::when($selectedThemeId, function ($query) use ($selectedThemeId) {
+            return $query->where('id_themes', $selectedThemeId);
+        })
+        ->when($selectedResourceTypeId, function ($query) use ($selectedResourceTypeId) {
+            return $query->where('id_resourcestype', $selectedResourceTypeId);
+        })
+        ->paginate(15);
+    
+        return view('resources.index', compact('filteredResources', 'themes', 'resourceTypes'));
     }
+    
+    
     public function create(){
         $themes = Themes::all();
         $extraResources = ExtraResource::all();
