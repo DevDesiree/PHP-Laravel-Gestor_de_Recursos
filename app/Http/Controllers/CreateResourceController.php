@@ -71,7 +71,7 @@ class CreateResourceController extends Controller
             'url' => $request->input('url'),
         ]);
     
-        return redirect()->route('resources.show', $resource->id)->with('success', 'Recurso actualizado correctamente.');
+        return redirect()->route('index', $resource->id)->with('success', 'Recurso actualizado correctamente.');
     }
 
     public function destroy($id) {
