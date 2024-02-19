@@ -47,10 +47,10 @@ Swal.fire({
         </div>
         <div class="flex flex-col items-center gap-2 pb-10">
             <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ url('/img/Atefa_1.png') }}" alt="author image" />
-            <h6 class="mb-1 text-xxl px-4 text-center font-small text-gray-500 italic">{{ $resource->author }}
-            </h6>
-            <h5 class="mb-1 text-xl px-4 text-center font-medium text-gray-900 dark:text-white">{{ $resource->title }}
-            </h5>
+            <h6 class="mb-1 text-xxl px-4 text-center font-small text-gray-900 dark:text-white resource-author">
+                {{ $resource->author }}</h6>
+            <h5 class="mb-1 text-xl px-4 text-center font-medium text-gray-900 dark:text-white resource-title">
+                {{ $resource->title }}</h5>
             <h5 class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white">
                 {{$resource->resourcetype->titleResource }}
                 <h5 class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white">
