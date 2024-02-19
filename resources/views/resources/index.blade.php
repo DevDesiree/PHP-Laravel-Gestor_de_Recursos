@@ -76,10 +76,12 @@ Swal.fire({
             <h5 class="mb-1 text-xl px-4 text-center font-medium text-gray-900 dark:text-white resource-title">
                 {{ $resource->title }}
             </h5>
-            <h5 class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white">
+            <h5
+                class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white {{ isset($resourceTypeColors[$resource->resourcetype->titleResource]) ? $resourceTypeColors[$resource->resourcetype->titleResource] : '' }}">
                 {{$resource->resourcetype->titleResource }}
             </h5>
-            <h5 class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white">
+            <h5
+                class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white {{ isset($themeColors[$resource->theme->title]) ? $themeColors[$resource->theme->title] : '' }}">
                 {{$resource->theme->title }}
             </h5>
             <h5 class="mb-1 text-xxl px-4 text-center font-small text-gray-900 dark:text-white">

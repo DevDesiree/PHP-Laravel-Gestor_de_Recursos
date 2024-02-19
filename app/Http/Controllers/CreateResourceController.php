@@ -21,7 +21,7 @@ class CreateResourceController extends Controller
         
         $selectedThemeId = $request->input('theme');
         $selectedResourceTypeId = $request->input('resource_type');
-    
+
         $filteredResources = Resource::when($selectedThemeId, function ($query) use ($selectedThemeId) {
             return $query->where('id_themes', $selectedThemeId);
         })
@@ -29,10 +29,22 @@ class CreateResourceController extends Controller
             return $query->where('id_resourcestype', $selectedResourceTypeId);
         })
         ->paginate(15);
-    
-        return view('resources.index', compact('filteredResources', 'themes', 'resourceTypes'));
+
+        $themeColors = [
+            'Tema 1' => 'bg-red-500',
+            'Tema 2' => 'bg-green-500',
+            // Añade más temas aquí
+        ];
+
+        $resourceTypeColors = [
+            'Masterclass' => 'bg-blue-500',
+            'Píldora' => 'bg-yellow-500',
+            'Coding Live' => 'bg-purple-500',
+            'Transversal' => 'bg-orange-500',
+        ];
+
+        return view('resources.index', compact('filteredResources', 'themes', 'resourceTypes', 'themeColors', 'resourceTypeColors'));
     }
-    
     
     public function create(){
         $themes = Themes::all();
