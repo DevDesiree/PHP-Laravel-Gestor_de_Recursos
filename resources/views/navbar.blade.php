@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="/resources/css/app.css">
     <title>navbar</title>
 
 </head>
@@ -20,12 +20,13 @@
                     <img src="{{ asset('img/logo-codecrafthers.png') }}" class="h-24 bg-white shadow-2xl" />
                 </a>
             </div>
-            <div>
+            <div class="mr-96">
                 <h1 class="text-white">Administrador de recursos</h1>
             </div>
-            <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+            <div class="w-full md:w-auto ml-36">
                 <a href="{{ route('resources.create') }}">
-                    <button class="add-btn hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    <button
+                        class="bg-yellow-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl items-end">
                         Crear recurso
                     </button></a>
             </div>
