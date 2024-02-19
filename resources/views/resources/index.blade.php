@@ -10,8 +10,7 @@
 Swal.fire({
     icon: 'success',
     title: 'Éxito',
-    text: '{{ Session::get('
-    success ') }}',
+    text: '{{ Session::get('success ') }}',
     showConfirmButton: true,
     timer: 2000
 });
@@ -66,10 +65,13 @@ Swal.fire({
                     <div class="flex mt-6 md:mt-6">
 
                         <a href="{{ route('resources.edit', $resource->id) }}"
-                            class=" w-1/2 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Editar</a>
+                            class=" w-1/2 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 
+                            focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Editar</a>
 
                         <a href="{{ route('resources.show', $resource->id) }}"
-                            class=" w-1/2 px-4 py-2 ms-2 text-sm font-medium text-white text-center focus:outline-none bg-green-600 rounded-lg border border-gray-200 hover:bg-green-800 hover:text-white focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Ver</a>
+                            class=" w-1/2 px-4 py-2 ms-2 text-sm font-medium text-white text-center focus:outline-none bg-green-600 rounded-lg border border-gray-200 
+                            hover:bg-green-800 hover:text-white focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 
+                            dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Ver</a>
 
                         {{-- <a href="{{ route('resources.destroy', $resource->id) }}"
                         class=" w-1/3 px-2 py-2 ms-2 text-sm font-medium text-white text-center focus:outline-none
