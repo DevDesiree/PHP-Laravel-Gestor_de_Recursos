@@ -50,8 +50,8 @@ You can now access the server at http://localhost:8000
 
 **Tool;DR command list**
 
-    git clone git@github.com:gothinkster/laravel-realworld-example-app.git
-    cd laravel-realworld-example-app
+    git clone  https://github.com/DevDesiree/PHP-Laravel-Gestor_de_Recursos
+    cd PHP-Laravel-Gestor_de_Recursos
     composer install
     cp .env.example .env
     php artisan key:generate
