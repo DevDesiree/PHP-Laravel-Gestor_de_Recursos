@@ -12,7 +12,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(20)->create();
 
-        // Crear Themes con títulos específicos
         $themeTitles = ['Project Management', 'Functional and Technical Analysis', 'Front-End', 'Back-End', 'Arquitectura', 'QA'];
         foreach ($themeTitles as $title) {
             Themes::factory()->create(['title' => $title]);
@@ -20,7 +19,6 @@ class DatabaseSeeder extends Seeder
 
         ExtraResource::factory(10)->create();
 
-        // Crear ResourceType con títulos específicos
         $resourceTitles = ['Masterclass', 'Píldora', 'Coding Live', 'Transversal'];
         foreach ($resourceTitles as $title) {
             ResourceType::factory()->create(['titleResource' => $title]);
