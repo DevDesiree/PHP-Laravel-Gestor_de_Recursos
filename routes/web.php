@@ -18,3 +18,4 @@ Route::group(['prefix' => 'resources'], function () {
     Route::delete('/{resource}', [CreateResourceController::class, 'destroy'])->name('resources.destroy');
 });
 Route::view('/navbar', 'navbar');
+Route::view('/footer', 'footer');
