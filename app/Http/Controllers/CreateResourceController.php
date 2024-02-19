@@ -31,19 +31,28 @@ class CreateResourceController extends Controller
         ->paginate(15);
 
         $themeColors = [
-            'Tema 1' => 'bg-red-500',
-            'Tema 2' => 'bg-green-500',
-            // Añade más temas aquí
+            'Project Management' => 'bg-red-200',
+            'Functional and Technical Analysis' => 'bg-green-200',
+            'Front-End' => 'bg-sky-200',
+            'Back-End' => 'bg-purple-200',
+            'Arquitectura' => 'bg-pink-200',
+            'QA' => 'bg-indigo-200',
         ];
 
         $resourceTypeColors = [
-            'Masterclass' => 'bg-blue-500',
-            'Píldora' => 'bg-yellow-500',
-            'Coding Live' => 'bg-purple-500',
-            'Transversal' => 'bg-orange-500',
+            'Masterclass' => 'text-blue-500',
+            'Píldora' => 'text-yellow-500',
+            'Coding Live' => 'text-purple-500',
+            'Transversal' => 'text-orange-500',
         ];
 
-        return view('resources.index', compact('filteredResources', 'themes', 'resourceTypes', 'themeColors', 'resourceTypeColors'));
+        $resourceTypeImages = [
+            'Masterclass' => '/img/master-class.png',
+            'Píldora' => '/img/pildora.png',
+            'Coding Live' => '/img/coding-live.png',
+            'Transversal' => '/img/transversal.png',
+        ];
+        return view('resources.index', compact('filteredResources', 'themes', 'resourceTypes', 'themeColors', 'resourceTypeColors', 'resourceTypeImages' ));
     }
     
     public function create(){

@@ -69,7 +69,9 @@ Swal.fire({
             </div>
         </div>
         <div class="flex flex-col items-center gap-2 pb-10">
-            <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ url('/img/Atefa_1.png') }}" alt="author image" />
+            <img class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover object-center"
+                src="{{ url(isset($resourceTypeImages[$resource->resourcetype->titleResource]) ? $resourceTypeImages[$resource->resourcetype->titleResource] : '/img/default.png') }}"
+                alt="resource image" />
             <h6 class="mb-1 text-xxl px-4 text-center font-small text-gray-900 dark:text-white resource-author">
                 {{ $resource->author }}
             </h6>
@@ -77,7 +79,7 @@ Swal.fire({
                 {{ $resource->title }}
             </h5>
             <h5
-                class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white {{ isset($resourceTypeColors[$resource->resourcetype->titleResource]) ? $resourceTypeColors[$resource->resourcetype->titleResource] : '' }}">
+                class="mb-1 text-lg px-4 text-center font-small font-bold {{ isset($resourceTypeColors[$resource->resourcetype->titleResource]) ? $resourceTypeColors[$resource->resourcetype->titleResource] : '' }}">
                 {{$resource->resourcetype->titleResource }}
             </h5>
             <h5
