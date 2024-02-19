@@ -14,7 +14,7 @@
 
     <header>
         @include('navbar')
-        <h1>Recursos</h1>
+
 
 
 
