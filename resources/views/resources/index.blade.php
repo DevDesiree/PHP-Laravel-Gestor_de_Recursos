@@ -18,7 +18,7 @@ Swal.fire({
 <div class="ml-24 w-3/12">
     <div class="mt-4 container-search w-">
         <label for="search" class="block text-md font-medium text-gray-700">Buscar por Título</label>
-        <input type="text" name="search" id="search" class="mt-1 p-2 border rounded-md"
+        <input type="text" name="search" id="search" class="mt-1 p-2 border rounded-md w-full"
             placeholder="Escribe para buscar...">
     </div>
 
