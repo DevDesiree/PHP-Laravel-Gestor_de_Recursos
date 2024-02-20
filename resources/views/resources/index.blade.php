@@ -3,7 +3,7 @@
 @section('title', 'Resources')
 
 @section('content')
-<h1 class="text-2xl text-bold text-yellow-800 text-center mt-6">Bienvenido a la página de recursos</h1>
+<h1 class="text-2xl text-bold text-yellow-800 text-center my-8">Bienvenido a la página de recursos</h1>
 @if (Session::has('success'))
 <script>
 Swal.fire({
@@ -15,7 +15,7 @@ Swal.fire({
 });
 </script>
 @endif
-<div class="ml-12 w-3/12">
+<div class="ml-24 w-3/12">
     <div class="mt-4 container-search w-">
         <label for="search" class="block text-md font-medium text-gray-700">Buscar por Título</label>
         <input type="text" name="search" id="search" class="mt-1 p-2 border rounded-md"
@@ -50,7 +50,7 @@ Swal.fire({
         </div>
     </form>
 </div>
-<div class="flex flex-row flex-wrap gap-10 px-12 pt-4 w-auto mb-10">
+<div class="flex flex-row flex-wrap gap-10 px-12 pt-4 w-auto mb-10 justify-center">
 
     @foreach ($filteredResources as $resource)
     <div
