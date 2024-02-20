@@ -22,12 +22,12 @@
                 <a href="{{ route('index') }}" class="flex items-center">
                     <img src="{{ asset('img/logo-codecrafthers.png') }}" class="h-24 bg-white shadow-2xl" />
                 </a>
-                <h1 class="text-white navbar-title">Administrador de recursos</h1>
+                <h1 class="text-white navbar-title italic text-lg">Administrador de recursos</h1>
             </div>
             <div class="pr-16">
                 <a href="{{ route('resources.create') }}">
                     <button
-                        class="bg-yellow-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl items-end">
+                        class="bg-yellow-600 hover:bg-yellow-800 text-white font-bold py-2 px-4 rounded-2xl items-end">
                         Crear recurso
                     </button></a>
             </div>

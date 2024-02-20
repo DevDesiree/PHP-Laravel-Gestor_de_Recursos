@@ -15,30 +15,40 @@
 <p><strong>Recurso Extra:</strong> {{$resource->extraResource->url}}</p>
 
 <p>{{$resource->description}}</p>
+<br>
 
 <form action="{{route('resources.destroy', $resource)}}" method="POST">
     @csrf
     @method('delete')
-    <button type="submit">Eliminar</button>
-    <br>
-    <br>
-    <a href="{{route('resources.edit', $resource)}}">Editar recurso</a>
+    <div class="flex flex-row w-46 space-between "> <button
+            class="inline-flex items-center px-4 py-2  text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 
+                        focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="submit">Eliminar</button>
+        <br>
+        <br>
+        <button
+            class="inline-flex items-center px-4 py-2  text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 
+                        focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"><a
+                href="{{route('resources.edit', $resource)}}">Editar recurso</a></button>
 
-    @if(Session::has('success'))
-    <script>
-    Swal.fire({
-        icon: 'success',
-        title: 'Éxito',
-        text: '{{ Session::get("success") }}',
-        showConfirmButton: true,
-        timer: 2000
-    });
-    </script>
-    @endif
+        @if(Session::has('success'))
+        <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: '{{ Session::get("success") }}',
+            showConfirmButton: true,
+            timer: 2000
+        });
+        </script>
+        @endif
 
-    <br>
-    <br>
-    <a href="{{route('index')}}">Volver a recursos</a>
+        <br>
+        <br>
+        <button
+            class="inline-flex items-center px-4 py-2  text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 
+                        focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><a
+                href="{{route('index')}}">Volver a recursos</a></button>
+    </div>
 </form>
 
 @endsection

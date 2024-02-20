@@ -14,7 +14,7 @@
 
     <header>
         @include('navbar')
-        <h1>Recursos</h1>
+
 
 
 
@@ -22,6 +22,7 @@
 
 
     @yield('content')
+    @include('footer')
 </body>
 
 </html>

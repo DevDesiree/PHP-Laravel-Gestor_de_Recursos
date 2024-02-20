@@ -21,7 +21,7 @@ class CreateResourceController extends Controller
         
         $selectedThemeId = $request->input('theme');
         $selectedResourceTypeId = $request->input('resource_type');
-    
+
         $filteredResources = Resource::when($selectedThemeId, function ($query) use ($selectedThemeId) {
             return $query->where('id_themes', $selectedThemeId);
         })
@@ -29,10 +29,31 @@ class CreateResourceController extends Controller
             return $query->where('id_resourcestype', $selectedResourceTypeId);
         })
         ->paginate(15);
-    
-        return view('resources.index', compact('filteredResources', 'themes', 'resourceTypes'));
+
+        $themeColors = [
+            'Project Management' => 'bg-red-200',
+            'Functional and Technical Analysis' => 'bg-green-200',
+            'Front-End' => 'bg-sky-200',
+            'Back-End' => 'bg-purple-200',
+            'Arquitectura' => 'bg-pink-200',
+            'QA' => 'bg-indigo-200',
+        ];
+
+        $resourceTypeColors = [
+            'Masterclass' => 'text-blue-500',
+            'Píldora' => 'text-yellow-500',
+            'Coding Live' => 'text-purple-500',
+            'Transversal' => 'text-orange-500',
+        ];
+
+        $resourceTypeImages = [
+            'Masterclass' => '/img/master-class.png',
+            'Píldora' => '/img/pildora.png',
+            'Coding Live' => '/img/coding-live.png',
+            'Transversal' => '/img/transversal.png',
+        ];
+        return view('resources.index', compact('filteredResources', 'themes', 'resourceTypes', 'themeColors', 'resourceTypeColors', 'resourceTypeImages' ));
     }
-    
     
     public function create(){
         $themes = Themes::all();

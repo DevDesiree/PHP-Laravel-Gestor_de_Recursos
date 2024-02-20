@@ -3,84 +3,88 @@
 @section('title', 'Resources')
 
 @section('content')
-<h1>Bienvenido a la página de recursos</h1>
-<a href="{{ route('resources.create') }}">Crear Recurso</a>
+<h1 class="text-2xl text-bold text-yellow-800 text-center mt-6">Bienvenido a la página de recursos</h1>
 @if (Session::has('success'))
 <script>
-    Swal.fire({
-        icon: 'success',
-        title: 'Éxito',
-        text: '{{ Session::get("success") }}',
-        showConfirmButton: true,
-        timer: 2000
-    });
+Swal.fire({
+    icon: 'success',
+    title: 'Éxito',
+    text: '{{ Session::get("success") }}',
+    showConfirmButton: true,
+    timer: 2000
+});
 </script>
 @endif
+<div class="ml-12 w-3/12">
+    <div class="mt-4 container-search w-">
+        <label for="search" class="block text-md font-medium text-gray-700">Buscar por Título</label>
+        <input type="text" name="search" id="search" class="mt-1 p-2 border rounded-md"
+            placeholder="Escribe para buscar...">
+    </div>
 
-<div class="mt-4 container-search">
-    <label for="search" class="block text-sm font-medium text-gray-700">Buscar por Título</label>
-    <input type="text" name="search" id="search" class="mt-1 p-2 border rounded-md" placeholder="Escribe para buscar...">
+    <form method="GET" action="{{ route('index') }}" id="filter-form">
+        @csrf
+        <div class="mt-4">
+            <label for="theme" class="block text-md font-medium text-gray-700">Filtrar por Tema</label>
+            <select name="theme" id="theme" class="mt-1 p-2 border rounded-md w-full" onchange="this.form.submit()">
+                <option value="" selected>Selecciona un tema</option>
+                @foreach ($themes as $theme)
+                <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+                @endforeach
+            </select>
+        </div>
+    </form>
+
+    <form method="GET" action="{{ route('index') }}" id="filter-form">
+        @csrf
+        <div class="mt-4">
+            <label for="resource_type" class="block text-md font-medium text-gray-700">Filtrar por Tipo de
+                Recurso</label>
+            <select name="resource_type" id="resource_type" class="mt-1 p-2 border rounded-md w-full"
+                onchange="this.form.submit()">
+                <option value="" selected>Selecciona un tipo de recurso</option>
+                @foreach ($resourceTypes as $resourceType)
+                <option value="{{ $resourceType->id }}">{{ $resourceType->titleResource }}</option>
+                @endforeach
+            </select>
+        </div>
+    </form>
 </div>
-
-<form method="GET" action="{{ route('index') }}" id="filter-form">
-    @csrf
-    <div class="mt-4">
-        <label for="theme" class="block text-sm font-medium text-gray-700">Filtrar por Tema</label>
-        <select name="theme" id="theme" class="mt-1 p-2 border rounded-md w-full" onchange="this.form.submit()">
-            <option value="" selected>Selecciona un tema</option>
-            @foreach ($themes as $theme)
-            <option value="{{ $theme->id }}">{{ $theme->title }}</option>
-            @endforeach
-        </select>
-    </div>
-</form>
-
-<form method="GET" action="{{ route('index') }}" id="filter-form">
-    @csrf
-    <div class="mt-4">
-        <label for="resource_type" class="block text-sm font-medium text-gray-700">Filtrar por Tipo de Recurso</label>
-        <select name="resource_type" id="resource_type" class="mt-1 p-2 border rounded-md w-full" onchange="this.form.submit()">
-            <option value="" selected>Selecciona un tipo de recurso</option>
-            @foreach ($resourceTypes as $resourceType)
-            <option value="{{ $resourceType->id }}">{{ $resourceType->titleResource }}</option>
-            @endforeach
-        </select>
-    </div>
-</form>
-
 <div class="flex flex-row flex-wrap gap-10 px-12 pt-4 w-auto">
 
     @foreach ($filteredResources as $resource)
-    <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 resource-card">
+    <div
+        class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 resource-card">
         <div class="flex flex-row flex-wrap px-4 pt-4">
-            <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-                <span class="sr-only">Open dropdown</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                    <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                </svg>
-            </button>
+
             <!-- Dropdown menu -->
-            <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+            <div id="dropdown"
+                class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                 <ul class="py-2" aria-labelledby="dropdownButton">
                     <li>
-                        <a href="{{ route('resources.show', $resource) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Ver</a>
+                        <a href="{{ route('resources.show', $resource) }}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Ver</a>
                     </li>
 
                 </ul>
             </div>
         </div>
         <div class="flex flex-col items-center gap-2 pb-10">
-            <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ url('/img/Atefa_1.png') }}" alt="author image" />
+            <img class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover object-center"
+                src="{{ url(isset($resourceTypeImages[$resource->resourcetype->titleResource]) ? $resourceTypeImages[$resource->resourcetype->titleResource] : '/img/default.png') }}"
+                alt="resource image" />
             <h6 class="mb-1 text-xxl px-4 text-center font-small text-gray-900 dark:text-white resource-author">
                 {{ $resource->author }}
             </h6>
             <h5 class="mb-1 text-xl px-4 text-center font-medium text-gray-900 dark:text-white resource-title">
                 {{ $resource->title }}
             </h5>
-            <h5 class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white">
+            <h5
+                class="mb-1 text-lg px-4 text-center font-small font-bold {{ isset($resourceTypeColors[$resource->resourcetype->titleResource]) ? $resourceTypeColors[$resource->resourcetype->titleResource] : '' }}">
                 {{$resource->resourcetype->titleResource }}
             </h5>
-            <h5 class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white">
+            <h5
+                class="mb-1 text-lg px-4 text-center font-small text-gray-900 dark:text-white {{ isset($themeColors[$resource->theme->title]) ? $themeColors[$resource->theme->title] : '' }}">
                 {{$resource->theme->title }}
             </h5>
             <h5 class="mb-1 text-xxl px-4 text-center font-small text-gray-900 dark:text-white">
@@ -94,10 +98,12 @@
 
             <div class="flex mt-6 md:mt-6">
 
-                <a href="{{ route('resources.edit', $resource->id) }}" class=" w-1/2 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 
+                <a href="{{ route('resources.edit', $resource->id) }}"
+                    class=" w-1/2 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 
                             focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Editar</a>
 
-                <a href="{{ route('resources.show', $resource->id) }}" class=" w-1/2 px-4 py-2 ms-2 text-sm font-medium text-white text-center focus:outline-none bg-green-600 rounded-lg border border-gray-200 
+                <a href="{{ route('resources.show', $resource->id) }}"
+                    class=" w-1/2 px-4 py-2 ms-2 text-sm font-medium text-white text-center focus:outline-none bg-green-600 rounded-lg border border-gray-200 
                             hover:bg-green-800 hover:text-white focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 
                             dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Ver</a>
 
@@ -114,7 +120,7 @@
 </div>
 
 @push('scripts')
-    <script src="{{ asset('js/search.js') }}"></script>
+<script src="{{ asset('js/search.js') }}"></script>
 @endpush
 
 @endsection
