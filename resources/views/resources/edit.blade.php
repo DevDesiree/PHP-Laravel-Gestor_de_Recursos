@@ -11,7 +11,7 @@
     @csrf
     @method('PUT')
 
-    <section class="bg-white dark:bg-gray-900 w-full">
+    <section class="bg-white dark:bg-gray-900 w-screen">
         <div class="flex flex-col lg:py-16">
             <h2 class="my-4 ml-12 text-xl font-bold text-gray-900 dark:text-white">Editar Recurso</h2>
             <div class="w-6/12 ml-12 mb-12">
