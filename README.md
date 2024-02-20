@@ -1,6 +1,5 @@
 
 # Code-Crafthers-Resource-Manager 
-# ![code-crafthers](../PHP-Laravel-Gestor_de_Recursos/public/crafhers-logo.png)
 
 ### Grupal project  of the FemCoders Bootcamp 😍
 
