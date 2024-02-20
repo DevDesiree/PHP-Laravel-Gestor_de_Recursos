@@ -3,7 +3,7 @@
 @section('title', 'Resources')
 
 @section('content')
-<h1>Bienvenido a la página de recursos</h1>
+<h1 class="text-2xl text-bold text-yellow-800 text-center mt-6">Bienvenido a la página de recursos</h1>
 @if (Session::has('success'))
 <script>
 Swal.fire({
@@ -15,40 +15,41 @@ Swal.fire({
 });
 </script>
 @endif
+<div class="ml-12 w-3/12">
+    <div class="mt-4 container-search w-">
+        <label for="search" class="block text-md font-medium text-gray-700">Buscar por Título</label>
+        <input type="text" name="search" id="search" class="mt-1 p-2 border rounded-md"
+            placeholder="Escribe para buscar...">
+    </div>
 
-<div class="mt-4 container-search">
-    <label for="search" class="block text-sm font-medium text-gray-700">Buscar por Título</label>
-    <input type="text" name="search" id="search" class="mt-1 p-2 border rounded-md"
-        placeholder="Escribe para buscar...">
+    <form method="GET" action="{{ route('index') }}" id="filter-form">
+        @csrf
+        <div class="mt-4">
+            <label for="theme" class="block text-md font-medium text-gray-700">Filtrar por Tema</label>
+            <select name="theme" id="theme" class="mt-1 p-2 border rounded-md w-full" onchange="this.form.submit()">
+                <option value="" selected>Selecciona un tema</option>
+                @foreach ($themes as $theme)
+                <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+                @endforeach
+            </select>
+        </div>
+    </form>
+
+    <form method="GET" action="{{ route('index') }}" id="filter-form">
+        @csrf
+        <div class="mt-4">
+            <label for="resource_type" class="block text-md font-medium text-gray-700">Filtrar por Tipo de
+                Recurso</label>
+            <select name="resource_type" id="resource_type" class="mt-1 p-2 border rounded-md w-full"
+                onchange="this.form.submit()">
+                <option value="" selected>Selecciona un tipo de recurso</option>
+                @foreach ($resourceTypes as $resourceType)
+                <option value="{{ $resourceType->id }}">{{ $resourceType->titleResource }}</option>
+                @endforeach
+            </select>
+        </div>
+    </form>
 </div>
-
-<form method="GET" action="{{ route('index') }}" id="filter-form">
-    @csrf
-    <div class="mt-4">
-        <label for="theme" class="block text-sm font-medium text-gray-700">Filtrar por Tema</label>
-        <select name="theme" id="theme" class="mt-1 p-2 border rounded-md w-full" onchange="this.form.submit()">
-            <option value="" selected>Selecciona un tema</option>
-            @foreach ($themes as $theme)
-            <option value="{{ $theme->id }}">{{ $theme->title }}</option>
-            @endforeach
-        </select>
-    </div>
-</form>
-
-<form method="GET" action="{{ route('index') }}" id="filter-form">
-    @csrf
-    <div class="mt-4">
-        <label for="resource_type" class="block text-sm font-medium text-gray-700">Filtrar por Tipo de Recurso</label>
-        <select name="resource_type" id="resource_type" class="mt-1 p-2 border rounded-md w-full"
-            onchange="this.form.submit()">
-            <option value="" selected>Selecciona un tipo de recurso</option>
-            @foreach ($resourceTypes as $resourceType)
-            <option value="{{ $resourceType->id }}">{{ $resourceType->titleResource }}</option>
-            @endforeach
-        </select>
-    </div>
-</form>
-
 <div class="flex flex-row flex-wrap gap-10 px-12 pt-4 w-auto">
 
     @foreach ($filteredResources as $resource)
