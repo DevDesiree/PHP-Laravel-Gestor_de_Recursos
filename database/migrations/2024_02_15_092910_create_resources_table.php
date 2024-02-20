@@ -16,10 +16,10 @@ return new class extends Migration
         $table->text('title');
         $table->string('author');
         $table->unsignedBigInteger('id_themes');
-        $table->foreign('id_themes')->references('id')->on('themes')->onDelete('cascade'); // Agregar onDelete('cascade')
+        $table->foreign('id_themes')->references('id')->on('themes')->onDelete('cascade');
         $table->unsignedBigInteger('id_extraresources');
-        $table->string('url_extraresources')->nullable(); // Agregar la columna url_extraresources
-        $table->foreign('id_extraresources')->references('id')->on('extraresources'); // Solo necesitas esta línea
+        $table->string('url_extraresources')->nullable();
+        $table->foreign('id_extraresources')->references('id')->on('extraresources');
         $table->unsignedBigInteger('id_resourcestype');
         $table->foreign('id_resourcestype')->references('id')->on('resourcestype');
         $table->timestamps();

@@ -12,7 +12,7 @@
 <p><strong>Tipo de Recurso:</strong> {{$resource->resourcetype->titleResource}}</p>
 <p><strong>Fecha de creación: </strong>{{ $creationDate->format('d/m/Y') }}</p>
 
-<p><strong>Recurso Extra:</strong> {{$resource->extraResource->url}}</p>
+<p><strong>Recurso Extra:</strong><a href="{{ $resource->extraResource->url }}" class="mb-1 text-xxl text-center font-small text-gray-900 hover:text-blue-500">{{ $resource->extraResource->url }}</a></p>
 
 <p>{{$resource->description}}</p>
 <br>
