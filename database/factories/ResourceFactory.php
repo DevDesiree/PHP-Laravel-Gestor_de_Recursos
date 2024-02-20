@@ -21,9 +21,9 @@ class ResourceFactory extends Factory
         return [
             'author'=>$this->faker->sentence(),
             'title'=>$this->faker->sentence(),
-            'id_themes' => 1,  
+            'id_themes' => rand(1, 4),  
             'id_extraresources' => rand(1, 2),
-            'id_resourcestype' => rand(1, 2),
+            'id_resourcestype' => rand(1, 5),
         ];
     }
     
