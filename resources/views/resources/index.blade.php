@@ -50,7 +50,7 @@ Swal.fire({
         </div>
     </form>
 </div>
-<div class="flex flex-row flex-wrap gap-10 px-12 pt-4 w-auto">
+<div class="flex flex-row flex-wrap gap-10 px-12 pt-4 w-auto mb-10">
 
     @foreach ($filteredResources as $resource)
     <div
